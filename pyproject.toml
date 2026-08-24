@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "marketloop"
+version = "0.1.0"
+description = "Hourly paper-trading research loop with Alpaca and a Tailscale-friendly mobile dashboard"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "alpaca-py>=0.42.0",
+  "fastapi>=0.116.0",
+  "uvicorn[standard]>=0.35.0",
+  "python-dotenv>=1.1.0",
+  "pandas>=2.2.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+marketloop = "marketloop.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
